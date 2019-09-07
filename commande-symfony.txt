@@ -1,0 +1,35 @@
+# récup symfony project de git
+composer install
+
+# créer un projet symfony
+composer create-project symfony/website-skeleton name_project
+
+# On créé la base de données
+php bin/console doctrine:database:create
+
+# lancer le server 127.0.0.1:8000
+php bin/console server:run
+
+# créer une table
+php bin/console make:entity
+
+# créer une migration
+php bin/console make:migration
+
+# modifier la bdd depuis la dernière migration
+php bin\console doctrine:migration:migrate
+
+# add librairy pour remplir la bdd avec values de test (uniquement sur le serveur de dev)
+composer require fzaninotto/faker --dev
+
+# update la bdd sans migration
+php bin/console doctrine:schema:update --force
+
+# lancer un chargement de fixtures (donnes de tests)
+php bin\console doctrine:fixtures:load
+
+# créer un formulaire
+php bin/console make:form
+
+# créer un controller
+php bin\console make:controller

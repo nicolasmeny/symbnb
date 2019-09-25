@@ -1,0 +1,43 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration des utilisateurs{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1 class="my-5">Administration des utilisateurs</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-center" >Id</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Annonces</th>
+                <th>Réservations</th>
+                <th>Commentaires</th>
+                <th class="text-center" >Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {%  for user in users %}
+            <tr>
+                <td class="text-center" >{{user.id}}</td>
+                <td>
+                    <img src="{{user.picture}}" alt="Avatar de {{user.fullName}}" class="avatar avatar-mini mr-1">
+                    {{user.fullName}}
+                </td>
+                <td>{{user.email}}</td>
+                <td>{{user.introduction}}</td>
+                <td class="text-center">{{user.ads | length }}</td>
+                <td class="text-center">{{user.bookings | length }}</td>
+                <td class="text-center">{{user.comments | length }}</td>
+                <td class="text-center" >
+                    <a href="{{path('admin_booking_edit',{"id":user.id})}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    <a href="{{path('admin_user_delete',{'id' : user.id})}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

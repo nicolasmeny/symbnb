@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <title>SymBNB - {% block title %}Welcome!{% endblock %}</title>
         <meta name="viewport" content="width=device-width, user-scalable=no">
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('build/css/app.css')}}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-        <link rel="stylesheet" href="/css/app.css">
+        {# <link rel="stylesheet" href="/css/app.css"> #}
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -20,6 +20,7 @@
         <script src="/js/jquery.min.js"></script>
         <script src="/js/popper.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
+        {# <script src="{{ asset('build/js/app.js')}}"></script> #}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
